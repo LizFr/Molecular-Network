@@ -177,8 +177,8 @@ solution = model.optimize()
 print(f'The {model.objective.direction} value of a flux through reaction "Growth" is {model.objective.value}')
 
 """ 3) We perform a FVA. Somehow there comes a runtime error when we try to
-perform the FVA on all reactions at the same time. For one reaction we gat a result. 
-Form our calculations would assume that there is no internal cycle since we 
+perform the FVA on all reactions at the same time. For one reaction we get a result. 
+From our calculations we would assume that there is no internal cycle since we 
 do not have unbounded flow through any reaction. But from the sketch of the 
 network on the exercise sheet we would have assumed that there is a cycle """
 for i in range(0,18):
@@ -207,7 +207,7 @@ Blocking out .... results in a max flow of .... through "Growth"
             R8                              3.518
             Rres                            1.333
             
-Looking at the values of the remaining fluxes we consider To2 ans Rres as
+Looking at the values of the remaining fluxes we consider To2 and Rres as
 essential. Also R1 and R2 seem to play an important role. 
 """
 
