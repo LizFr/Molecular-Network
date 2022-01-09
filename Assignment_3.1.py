@@ -177,7 +177,10 @@ solution = model.optimize()
 print(f'The {model.objective.direction} value of a flux through reaction "Growth" is {model.objective.value}')
 
 """ 3) We perform a FVA. Somehow there comes a runtime error when we try to
-perform the FVA on all reactions at the same time. For one reaction we gat a result"""
+perform the FVA on all reactions at the same time. For one reaction we gat a result. 
+Form our calculations would assume that there is no internal cycle since we 
+do not have unbounded flow through any reaction. But from the sketch of the 
+network on the exercise sheet we would have assumed that there is a cycle """
 for i in range(0,18):
     print(flux_variability_analysis(model,model.reactions[i]))
 
