@@ -47,6 +47,8 @@ R8 = Reaction('R8')
 R8.lower_bound = -1000
 R8.upper_bound=1000
 Rres = Reaction('Rres')
+Rres.upper_bound =0
+Rres.lower_bound =0
 Growth = Reaction('Growth')
 
 #Metabolites
@@ -174,5 +176,37 @@ solution = model.optimize()
 
 print(f'The {model.objective.direction} value of a flux through reaction "Growth" is {model.objective.value}')
 
-""" 3) We perform a FVA"""
-print(flux_variability_analysis(model,model.reactions[17]))
+""" 3) We perform a FVA. Somehow there comes a runtime error when we try to
+perform the FVA on all reactions at the same time. For one reaction we gat a result"""
+for i in range(0,18):
+    print(flux_variability_analysis(model,model.reactions[i]))
+
+
+
+"""4) We performed single knock-out experiments. We set Reaction.upper_bound =0
+and Reaction.lower_bound =0. 
+Blocking out .... results in a max flow of .... through "Growth"
+            Tc1                             3.5
+            Tc2                             3.5
+            Tf                              3.172
+            Th                              3.518
+            To2                             1.333
+            Td                              2.281
+            Te                              3.009
+            R1                              1.883
+            R2                              1.883
+            R3                              3.518
+            R4                              3.244
+            R5a                             3.518
+            R5b                             3.518
+            R6                              2.281
+            R7                              3.009
+            R8                              3.518
+            Rres                            1.333
+            
+Looking at the values of the remaining fluxes we consider To2 ans Rres as
+essential. Also R1 and R2 seem to play an important role. 
+"""
+
+
+
